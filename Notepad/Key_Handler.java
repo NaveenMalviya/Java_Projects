@@ -48,27 +48,3 @@ class Key_Handler implements KeyListener {
         // Not used in this example
     }
 }
-
-// Create the Main class
-public class Main {
-    public static void main(String[] args) {
-        // Create an instance of the GUI class
-        GUI gui = new GUI();
-
-        // Create a JFrame
-        JFrame frame = new JFrame("Keyboard Event Handling Example");
-
-        // Create a JTextArea for demonstration
-        JTextArea textArea = new JTextArea();
-        textArea.setPreferredSize(new Dimension(300, 200));
-        textArea.addKeyListener(new Key_Handler(gui)); // Add Key_Handler as KeyListener
-
-        // Add the JTextArea to the JFrame
-        frame.add(textArea);
-
-        // Configure the JFrame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-}
