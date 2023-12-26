@@ -1,23 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-// Define the GUI class
-class GUI {
-    // Sample method for demonstration
-    public void performAction(String action) {
-        System.out.println("Performed action: " + action);
-        // You can replace this with your actual file-handling logic
-    }
-}
-
 // Create the Key_Handler class
-class Key_Handler implements KeyListener {
+public class Key_Handler implements KeyListener {
     private final GUI gui;
 
+    
     public Key_Handler(GUI gui) {
         this.gui = gui;
     }
+  
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -27,19 +18,19 @@ class Key_Handler implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_S) {
-            gui.performAction("Save");
+            gui.file.saveFile();
         }
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_N) {
-            gui.performAction("New");
+            gui.file.newFile();
         }
 
         if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_O) {
-            gui.performAction("Open");
+            gui.file.openFile();
         }
 
         if (e.isShiftDown() && e.getKeyCode() == KeyEvent.VK_S) {
-            gui.performAction("Save As");
+            gui.file.saveAsFile();
         }
     }
 
