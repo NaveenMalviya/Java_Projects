@@ -13,28 +13,28 @@ import javax.swing.event.UndoableEditListener;
 import javax.swing.undo.UndoManager;
 
 public class GUI implements ActionListener {
-//Frame
+    //Frame
     JFrame window;
     JTextArea textArea;
     JScrollPane scrollPane;
-    
-//Format
+
+    //Format
     boolean wordWrapOn = false;
     JMenuItem iWrap, iFontArial, iFontCSMS, iFontTINR, iFontSize8, iFontSize12, iFontSize16, iFontSize20, iFontSize24, iFontSize28;
-    JMenu menuFont, menuFontSize;    
-//Menu
+    JMenu menuFont, menuFontSize;
+    //Menu
     JMenuBar menuBar;
     JMenu menuFile, menuEdit, menuFormat, menuColor;
     JMenuItem iNew, iOpen, iSave, iSaveAs, iExit;
 
 
-//Color
+    //Color
     JMenuItem iColor1, iColor2, iColor3;
 
-//Edit
+    //Edit
     JMenuItem iUndo, iRedo;
 
-//Objects
+    //Objects
     Function_File file = new Function_File(this);
     Function_Format format = new Function_Format(this);
     Function_Color color = new Function_Color(this);
@@ -43,13 +43,13 @@ public class GUI implements ActionListener {
     UndoManager um = new UndoManager();
 
 
-//Main Method
+    //Main Method
     public static void main(String[] args) {
         new GUI();
     }
 
 
-//Constructor
+    //Constructor
     public GUI() {
         createWindow();
         createTextArea();
@@ -79,10 +79,10 @@ public class GUI implements ActionListener {
         textArea.addKeyListener(key);
         textArea.getDocument().addUndoableEditListener(
                 new UndoableEditListener() {
-            public void undoableEditHappened(UndoableEditEvent e) {
-                um.addEdit(e.getEdit());
-            }
-        });
+                    public void undoableEditHappened(UndoableEditEvent e) {
+                        um.addEdit(e.getEdit());
+                    }
+                });
 
         scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
@@ -229,46 +229,26 @@ public class GUI implements ActionListener {
         String command = e.getActionCommand();
 
         switch (command) {
-            case "New" ->
-                file.newFile();
-            case "Open" ->
-                file.openFile();
-            case "Save" ->
-                file.saveFile();
-            case "SaveAs" ->
-                file.saveAsFile();
-            case "Exit" ->
-                file.ExitFile();
-            case "Word Wrap" ->
-                format.wordWrap();
-            case "Size8" ->
-                format.createFont(8);
-            case "Arial" ->
-                format.setFont(command);
-            case "Comic Sans MS" ->
-                format.setFont(command);
-            case "Times New Roman" ->
-                format.setFont(command);
-            case "Size12" ->
-                format.createFont(8);
-            case "Size16" ->
-                format.createFont(16);
-            case "Size20" ->
-                format.createFont(20);
-            case "Size24" ->
-                format.createFont(24);
-            case "Size28" ->
-                format.createFont(28);
-            case "White" ->
-                color.changeColor(command);
-            case "Black" ->
-                color.changeColor(command);
-            case "Blue" ->
-                color.changeColor(command);
-            case "Undo" ->
-                FE.undo();
-            case "Redo" ->
-                FE.redo();
+            case "New" -> file.newFile();
+            case "Open" -> file.openFile();
+            case "Save" -> file.saveFile();
+            case "SaveAs" -> file.saveAsFile();
+            case "Exit" -> file.ExitFile();
+            case "Word Wrap" -> format.wordWrap();
+            case "Size8" -> format.createFont(8);
+            case "Arial" -> format.setFont(command);
+            case "Comic Sans MS" -> format.setFont(command);
+            case "Times New Roman" -> format.setFont(command);
+            case "Size12" -> format.createFont(8);
+            case "Size16" -> format.createFont(16);
+            case "Size20" -> format.createFont(20);
+            case "Size24" -> format.createFont(24);
+            case "Size28" -> format.createFont(28);
+            case "White" -> color.changeColor(command);
+            case "Black" -> color.changeColor(command);
+            case "Blue" -> color.changeColor(command);
+            case "Undo" -> FE.undo();
+            case "Redo" -> FE.redo();
 
         }
     }
